@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h2>Add Game</h2>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.date.label(class="form-control-label") }}
+      <div class="input-group date" id="datepicker">
+        {{ form.date(class="form-control") }}
+        <div class="input-group-append">
+          <span class="input-group-text">
+            <i class="fa fa-calendar"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      {{ form.opponent.label(class="form-control-label") }}
+      {{ form.opponent(class="form-control") }}
+    </div>
+    <div class="form-group">
+      {{ form.score_own.label(class="form-control-label") }}
+      {{ form.score_own(class="form-control") }}
+    </div>
+    <div class="form-group">
+      {{ form.score_opponent.label(class="form-control-label") }}
+      {{ form.score_opponent(class="form-control") }}
+    </div>
+    <div class="form-group">
+      {{ form.submit(class="btn btn-primary") }}
+    </div>
+  </form>
+
+  <script>
+    $(document).ready(function(){
+      $('#datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        todayHighlight: true
+      });
+    });
+  </script>
+{% endblock %}

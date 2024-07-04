@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h2>Add Player</h2>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.name.label }} {{ form.name() }}
+    {{ form.submit() }}
+  </form>
+{% endblock %}

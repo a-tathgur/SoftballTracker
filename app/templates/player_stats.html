@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h2>Add Player Stats for Game</h2>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.player.label }} {{ form.player() }}
+    {{ form.singles.label }} {{ form.singles() }}
+    {{ form.doubles.label }} {{ form.doubles() }}
+    {{ form.triples.label }} {{ form.triples() }}
+    {{ form.home_runs.label }} {{ form.home_runs() }}
+    {{ form.walks.label }} {{ form.walks() }}
+    {{ form.outs.label }} {{ form.outs() }}
+    {{ form.position.label }} {{ form.position() }}
+    {{ form.submit() }}
+  </form>
+{% endblock %}

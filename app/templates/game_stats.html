@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h2>Game Stats vs {{ game.opponent }} on {{ game.date }}</h2>
+  <table class="table">
+    <tr>
+      <th>Player</th>
+      <th>Position</th>
+      <th>Singles</th>
+      <th>Doubles</th>
+      <th>Triples</th>
+      <th>Home Runs</th>
+      <th>Walks</th>
+      <th>Outs</th>
+      <th>Actions</th>
+    </tr>
+    {% for stat in player_stats %}
+    <tr>
+      <td>{{ stat.player.name }}</td>
+      <td>{{ stat.position }}</td>
+      <td>{{ stat.singles }}</td>
+      <td>{{ stat.doubles }}</td>
+      <td>{{ stat.triples }}</td>
+      <td>{{ stat.home_runs }}</td>
+      <td>{{ stat.walks }}</td>
+      <td>{{ stat.outs }}</td>
+      <td>
+        <form action="{{ url_for('routes.delete_player_stats', player_stats_id=stat.id) }}" method="POST" style="display:inline;">
+          <button type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h1>Softball Stat Tracker</h1>
+  <h2>Players</h2>
+  <ul>
+    {% for player in players %}
+      <li>{{ player.name }} - Batting Average: {{ "%.3f"|format(player.batting_average) }}</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Games</h2>
+  <ul>
+    {% for game in games %}
+      <li>{{ game.date }} vs {{ game.opponent }} - Score: {{ game.score_own }}-{{ game.score_opponent }}
+          <a href="{{ url_for('routes.add_player_stats', game_id=game.id) }}">Add Stats</a>
+          <a href="{{ url_for('routes.game_stats', game_id=game.id) }}">View Stats</a>
+          <a href="{{ url_for('routes.delete_game', game_id=game.id) }}" class="btn btn-danger btn-sm">Delete</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
